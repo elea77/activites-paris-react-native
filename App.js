@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Routes from './src/config/routes'
 import { ThemeProvider } from 'styled-components'
+import { store } from './src/config/store'
+
+import { Provider } from 'react-redux'
 
 import { lightTheme, darkTheme } from './src/config/theme'
-import Routes from './src/config/routes'
-
+import { PersistGate } from 'redux-persist/integration/react'
 
 const App = () => {
 
   return (
-    <ThemeProvider theme={lightTheme} >
-      <Routes />
-    </ThemeProvider>
+    <Provider store={store}>
+    {/* <PersistGate loading={null}> */}
+      <ThemeProvider theme={lightTheme}>
+        <Routes></Routes>
+      </ThemeProvider>
+    {/* </PersistGate> */}
+  </Provider>
   )
 }
 

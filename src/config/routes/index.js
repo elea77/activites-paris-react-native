@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Image } from "react-native";
 import HomeStack from './homeStack'
 import WishlistStack from './wishlistStack'
+import MapStack from './mapStack'
 // import FlashMessage from 'react-native-flash-message'
 
 const BottomTab = createBottomTabNavigator()
@@ -21,6 +22,13 @@ const Routes = () => {
             uri: "https://cdn-icons-png.flaticon.com/512/1946/1946488.png"
           }} style={{width: 28, height: 28}} />)
         }} />
+        <BottomTab.Screen name='Carte' component={MapStack}
+          options={{
+            headerShown: false,
+            tabBarIcon: () => (<Image source={{
+              uri: "https://cdn-icons-png.flaticon.com/512/876/876205.png"
+            }} style={{width: 28, height: 28}} />)
+          }} />
         <BottomTab.Screen name='Mes favoris' component={WishlistStack}
           options={{
             headerShown: false,

@@ -3,15 +3,15 @@ import { Container } from '../components/layout'
 import { Title } from '../components/text'
 import styled from 'styled-components'
 
-const Wishlist = ({navigation}) => {
+const Map = ({navigation}) => {
 
   return (
     <Container>
-        <Title>Wishlist</Title>
+        <Title>Map</Title>
     </Container>
   )
 }
 
-Wishlist.propTypes = {}
+Map.propTypes = {}
 
-export default Wishlist
+export default Map
