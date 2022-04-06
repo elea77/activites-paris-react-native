@@ -13,10 +13,9 @@ const Cover = ({ urlImage }) => {
 
 
 const Image = styled.Image`
-    width: 300px;
-    height: 200px;
-    borderRadius: 15px;
-    margin: 5px;
+  width: 180px;
+  height: 100px;
+  margin: 5px;
 `
 
 export default Cover

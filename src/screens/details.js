@@ -6,21 +6,16 @@ import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FlatList } from 'react-native';
 
-const Details = ({navigation}) => {
-  // const activities = useSelector(state => state.activities.activitiesList)
-  // const dispatch = useDispatch()
+const Details = ({ route }) => {
+   
+  const {
+    params: { item }
+  } = route
 
-  // useEffect(() => {
-  //   dispatch(allTheActions.activities.getActivities({}))
-  //   return () => {
-  //     dispatch(allTheActions.activities.clearActivities())
-  //     console.log(activities);
-  //   }
-  // }, [dispatch])
 
   return (
     <Container>
-        <Title>Details</Title>
+        <Title>{item.fields.title}</Title>
         
     </Container>
   )

@@ -5,36 +5,32 @@ import { Title } from '../components/text'
 import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FlatList } from 'react-native';
+import Button from '../components/button'
 
 const Home = ({navigation}) => {
   const activities = useSelector(state => state.activities.activitiesList)
   const dispatch = useDispatch()
 
+  const [rows, setRows] = useState(10)
+
   useEffect(() => {
-    dispatch(allTheActions.activities.getActivities({}))
+    dispatch(allTheActions.activities.getActivities(rows))
     return () => {
       dispatch(allTheActions.activities.clearActivities())
-      console.log(activities);
     }
-  }, [dispatch])
+  }, [rows, dispatch])
 
   return (
     <Container>
-        <Title>Home</Title>
+        <Title>Activités sur Paris</Title>
         <FlatList
           pagingEnabled={true}
           data={activities}
+          numColumns={2}
           keyExtractor={item => item.recordid}
+          onEndReached={() => setRows(rows + 6)}
           renderItem={({ item }) => (
-            <Button onPress={() => navigation.navigate('Details', { id: item.id })}>
-
-              <Image
-                source={{
-                  uri: item.fields.cover_url
-                }}
-              />
-              <Text>{item.fields.title_event}</Text>
-            </Button>
+            <Button item={item} navigation={navigation} />
           )}
       />
     </Container>
@@ -43,17 +39,9 @@ const Home = ({navigation}) => {
 
 Home.propTypes = {}
 
-const Button = styled.TouchableOpacity`
-`
 
 const Text = styled.Text``
 
-const Image = styled.Image`
-  width: 300px;
-  height: 200px;
-  borderRadius: 15px
-  margin: 5px
-`
 
 
 

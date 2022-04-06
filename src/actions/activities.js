@@ -12,10 +12,13 @@ export const clearActivities = () => ({
     type: CLEAR_ACTIVITIES
 })
 
-export const getActivities = ({ }) => dispatch => {
+export const getActivities = rows => dispatch => {
     axios({
         method: 'GET',
         url: `${process.env.API_URL}`,
+        params: {
+            rows: rows
+        }
     })
     .then(res => {
         dispatch(displayActivities(res.data.records))
