@@ -40,9 +40,4 @@ const Home = ({navigation}) => {
 Home.propTypes = {}
 
 
-const Text = styled.Text``
-
-
-
-
 export default Home

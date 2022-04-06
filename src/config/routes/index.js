@@ -7,6 +7,7 @@ import HomeStack from './homeStack'
 import WishlistStack from './wishlistStack'
 import MapStack from './mapStack'
 // import FlashMessage from 'react-native-flash-message'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const BottomTab = createBottomTabNavigator()
 
@@ -19,25 +20,25 @@ const Routes = () => {
         options={{
           title: 'Accueil',
           headerShown: false,
-          tabBarIcon: () => (<Image source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/1946/1946488.png"
-          }} style={{width: 28, height: 28}} />)
+          tabBarIcon: ({focused}) => (
+            <Icon name={focused ? "home" : "home-outline"} size={28} />
+          )
         }} />
         <BottomTab.Screen name='MapStack' component={MapStack}
           options={{
-          title: 'Carte',
+            title: 'Carte',
             headerShown: false,
-            tabBarIcon: () => (<Image source={{
-              uri: "https://cdn-icons-png.flaticon.com/512/876/876205.png"
-            }} style={{width: 28, height: 28}} />)
+            tabBarIcon: ({focused}) => (
+              <Icon name={focused ? "map" : "map-outline"} size={28} />
+            )
           }} />
         <BottomTab.Screen name='WishlistStack' component={WishlistStack}
           options={{
             title: 'Mes favoris',
             headerShown: false,
-            tabBarIcon: () => (<Image source={{
-              uri: "https://cdn-icons-png.flaticon.com/512/126/126471.png"
-            }} style={{width: 28, height: 28}} />)
+            tabBarIcon: ({focused}) => (
+              <Icon name={focused ? "heart" : "heart-outline"} size={28} />
+            )
           }} />
       </BottomTab.Navigator>
       {/* <FlashMessage position='top' /> */}
