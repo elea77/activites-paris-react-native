@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-const Container = styled.ScrollView`
+const ContainerScroll = styled.ScrollView`
+    margin: 10px
+`
+
+const Container = styled.View`
     margin: 10px
 `
 
@@ -8,4 +12,4 @@ const View = styled.View`
     margin: 10px
 `
 
-export { View, Container }
+export { View, ContainerScroll, Container }

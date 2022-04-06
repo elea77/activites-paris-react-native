@@ -21,33 +21,20 @@ const Home = ({navigation}) => {
   return (
     <Container>
         <Title>Home</Title>
-        {/* <LessonsContainer>
-          <Text>Test</Text>
-          <LessonButtonContainer>
-            {activities[0] ? (
-              activities.map(activity => (
-                <View
-                  key={activity.recordid}
-                  // cover={activity.cover?.url}
-                >
-                  <Text>{activity.fields.title_event}</Text>
-                </View>
-              ))
-            ) : (
-              <Text>Pas de leçons disponible</Text>
-            )}
-            </LessonButtonContainer>
-        </LessonsContainer> */}
         <FlatList
           pagingEnabled={true}
           data={activities}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.recordid}
           renderItem={({ item }) => (
-               <Image
-               source={{
-                 uri: item.fields.cover_url
-               }}
-             />
+            <Button onPress={() => navigation.navigate('Details', { id: item.id })}>
+
+              <Image
+                source={{
+                  uri: item.fields.cover_url
+                }}
+              />
+              <Text>{item.fields.title_event}</Text>
+            </Button>
           )}
       />
     </Container>
@@ -55,6 +42,9 @@ const Home = ({navigation}) => {
 }
 
 Home.propTypes = {}
+
+const Button = styled.TouchableOpacity`
+`
 
 const Text = styled.Text``
 

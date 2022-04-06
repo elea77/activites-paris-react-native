@@ -15,7 +15,7 @@ export const clearActivities = () => ({
 export const getActivities = ({ }) => dispatch => {
     axios({
         method: 'GET',
-        url: `https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-`,
+        url: `${process.env.API_URL}`,
     })
     .then(res => {
         dispatch(displayActivities(res.data.records))
