@@ -17,19 +17,19 @@ const Routes = () => {
     <NavigationContainer>
       <BottomTab.Navigator>
         <BottomTab.Screen name='HomeStack' component={HomeStack}
-        options={{
-          title: 'Accueil',
-          headerShown: false,
-          tabBarIcon: ({focused}) => (
-            <Icon name={focused ? "home" : "home-outline"} size={28} />
-          )
-        }} />
+          options={{
+            title: 'Accueil',
+            headerShown: false,
+            tabBarIcon: ({focused}) => (
+              <Icon name={focused ? "home" : "home-outline"} size={28} color={focused ? '#2d8aa7' : 'black'} />
+            )
+          }} />
         <BottomTab.Screen name='MapStack' component={MapStack}
           options={{
             title: 'Carte',
             headerShown: false,
             tabBarIcon: ({focused}) => (
-              <Icon name={focused ? "map" : "map-outline"} size={28} />
+              <Icon name={focused ? "map" : "map-outline"} size={28} color={focused ? '#2d8aa7' : 'black'} />
             )
           }} />
         <BottomTab.Screen name='WishlistStack' component={WishlistStack}
@@ -37,7 +37,7 @@ const Routes = () => {
             title: 'Mes favoris',
             headerShown: false,
             tabBarIcon: ({focused}) => (
-              <Icon name={focused ? "heart" : "heart-outline"} size={28} />
+              <Icon name={focused ? "heart" : "heart-outline"} size={28} color={focused ? '#2d8aa7' : 'black'} />
             )
           }} />
       </BottomTab.Navigator>

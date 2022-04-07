@@ -12,18 +12,19 @@ export const clearActivities = () => ({
     type: CLEAR_ACTIVITIES
 })
 
-export const getActivities = rows => dispatch => {
-    axios({
+export const getActivities = (rows, start) => dispatch => {
+    return axios({
         method: 'GET',
         url: `${process.env.API_URL}`,
         params: {
-            rows: rows
+            rows: rows,
+            start: start
         }
     })
-    .then(res => {
-        dispatch(displayActivities(res.data.records))
-    })
-    .catch(err => {
-        console.log(err)
-    })
+}
+
+
+export const classicCall = (rows, start) => async() => {
+    const result = await getActivities(rows, start)();
+    dispatch(displayActivities(result));
 }

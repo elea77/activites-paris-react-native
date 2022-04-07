@@ -2,26 +2,27 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from '../../screens/home'
 import Details from '../../screens/details'
+import Settings from '../../screens/settings'
 import styled from 'styled-components'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const Stack = createNativeStackNavigator()
 
-const HomeStack = () => {
+const HomeStack = ({navigation}) => {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Home' component={Home}
         options={{
           headerRight: () => (
             <Button
-              onPress={() => alert('This is a button!')}
-              color="black"
-            >
+              onPress={() => navigation.navigate('Settings') }
+              color="black">
               <Icon name='settings-outline' size={20} />
             </Button>
           ),
       }} />
       <Stack.Screen name='Details' component={Details} />
+      <Stack.Screen name='Settings' component={Settings} />
     </Stack.Navigator>
   )
 }

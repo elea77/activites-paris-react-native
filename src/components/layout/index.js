@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
-const ContainerScroll = styled.ScrollView`
+const Container = styled.ScrollView`
     margin: 10px;
+    height: 100%;
 `
 
-const Container = styled.SafeAreaView`
+
+const ContainerSafeArea = styled.SafeAreaView`
     marginBottom: 50px;
 `
 
-const View = styled.View`
-    margin: 10px;
-`
-
-export { View, ContainerScroll, Container }
+export { ContainerSafeArea, Container }
