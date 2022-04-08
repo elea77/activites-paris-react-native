@@ -4,10 +4,11 @@ import styled from 'styled-components'
 import { Title } from '../components/text'
 import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { FlatList } from 'react-native';
+import { image, View, Text, TouchableOpacity } from 'react-native';
+import ReadMore from '@fawazahmed/react-native-read-more';
 
 const Details = ({ route }) => {
-   
+
   const favorites = useSelector(state => state.favorites.favoritesList)
   const dispatch = useDispatch()
 
@@ -15,22 +16,34 @@ const Details = ({ route }) => {
     params: { item }
   } = route
 
-  const test = () => {
+  const addRemove = () => {
     dispatch(allTheActions.favorites.checkFavorite(item.recordid))
   }
 
   useEffect(() => {
     console.log('mes favoris:', favorites);
   }, [favorites])
-
+  console.log(item);
   return (
     <Container>
-        <Title>{item.fields.title}</Title>
-        <Button 
-          onPress={() => test()}
-        >
-          <Text>sheeeeeesh</Text>
-        </Button>
+      <Image source={{ uri: item.fields.cover_url }} />
+      <ContainerText>
+      <Title>{item.fields.title}</Title>
+      <Text> {item.fields.tags} </Text>
+      <Text> {item.fields.address_name} </Text>
+      <Text> {item.fields.address_street} </Text>
+      <Text> {item.fields.address_zipcode} </Text>
+      <City> {item.fields.address_city} </City>
+
+      <ReadMore numberOfLines={5} seeMoreText='Lire plus' seeLessText='Lire moins'>
+        <TextDescription> {item.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
+      </ReadMore>
+      <Button
+        onPress={() => addRemove()}
+      >
+        <TextButton>Ajouter aux favoris</TextButton>
+      </Button>
+      </ContainerText>
     </Container>
   )
 }
@@ -38,15 +51,39 @@ const Details = ({ route }) => {
 Details.propTypes = {}
 
 const Button = styled.TouchableOpacity`
+  marginTop: 20px
+  alignItems: center
+  background: #2d8aa7,
+  width: 150px;
+  height: 40px;
+  borderRadius: 20px
 `
 
-const Text = styled.Text``
+const TextButton = styled.Text`
+  paddingTop: 10px
+  alignItems: center;
+  color: #ffffff
+
+`
+const ContainerText = styled.View`
+  margin: 10px;
+  alignItems: center
+
+
+`
+const TextDescription = styled.Text`
+`
+
+const City = styled.Text`
+color: 'white',
+background: #2d8aa7,
+
+`
 
 const Image = styled.Image`
-  width: 300px;
-  height: 200px;
-  border-radius: 15px;
-  margin: 5px;
+  width: 400px;
+  height: 300px;
+  margin-bottom : 5px;
 `
 
 

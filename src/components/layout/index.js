@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const Container = styled.ScrollView`
-    margin: 10px;
     height: 100%;
 `
 
