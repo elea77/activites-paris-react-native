@@ -7,7 +7,9 @@ const Stack = createNativeStackNavigator()
 const MapStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Map' component={Map} />
+      <Stack.Screen name='Map' component={Map} options={{
+        title: 'Carte'
+      }} />
     </Stack.Navigator>
   )
 }
