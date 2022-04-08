@@ -21,7 +21,7 @@ const Routes = () => {
             title: 'Accueil',
             headerShown: false,
             tabBarIcon: ({focused}) => (
-              <Icon name={focused ? "home" : "home-outline"} size={28} color={focused ? '#2d8aa7' : 'black'} />
+              <Icon name={focused ? "home" : "home-outline"} size={28} color={focused ? '#8b0000' : 'black'} />
             )
           }} />
         <BottomTab.Screen name='MapStack' component={MapStack}
@@ -29,7 +29,7 @@ const Routes = () => {
             title: 'Carte',
             headerShown: false,
             tabBarIcon: ({focused}) => (
-              <Icon name={focused ? "map" : "map-outline"} size={28} color={focused ? '#2d8aa7' : 'black'} />
+              <Icon name={focused ? "map" : "map-outline"} size={28} color={focused ? '#8b0000' : 'black'} />
             )
           }} />
         <BottomTab.Screen name='WishlistStack' component={WishlistStack}
@@ -37,7 +37,7 @@ const Routes = () => {
             title: 'Mes favoris',
             headerShown: false,
             tabBarIcon: ({focused}) => (
-              <Icon name={focused ? "heart" : "heart-outline"} size={28} color={focused ? '#2d8aa7' : 'black'} />
+              <Icon name={focused ? "heart" : "heart-outline"} size={28} color={focused ? '#8b0000' : 'black'} />
             )
           }} />
       </BottomTab.Navigator>
