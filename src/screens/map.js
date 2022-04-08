@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MapView, { Marker, Overlay } from 'react-native-maps';
+// import MapView, { Marker, Overlay } from 'react-native-maps';
 import allTheActions from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
@@ -18,7 +18,7 @@ const Map = ({navigation}) => {
   
   return (
     <View>
-      <MapView
+      {/* <MapView
         style={{ width: "100%", height: "100%"}}
         initialRegion={{
           latitude: 48.8534,
@@ -33,7 +33,7 @@ const Map = ({navigation}) => {
               title={item.fields.title}
             />
           ))}
-      </MapView>
+      </MapView> */}
     </View>
   )
 }

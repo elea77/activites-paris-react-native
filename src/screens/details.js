@@ -16,8 +16,8 @@ const Details = ({ route }) => {
     params: { item }
   } = route
 
-  const addRemove = () => {
-    dispatch(allTheActions.favorites.checkFavorite(item.recordid))
+  const checkFavorite = () => {
+    dispatch(allTheActions.favorites.checkFavorite({recordid: item.recordid, title: item.fields.title, img: item.fields.cover_url}))
   }
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Details = ({ route }) => {
         <TextDescription> {item.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
       </ReadMore>
       <Button
-        onPress={() => addRemove()}
+        onPress={() => checkFavorite()}
       >
         <TextButton>Ajouter aux favoris</TextButton>
       </Button>
