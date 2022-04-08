@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ContainerSafeArea } from '../components/layout'
+import styled from 'styled-components'
 import { TitleListing } from '../components/text'
 import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,8 +12,7 @@ const Home = ({navigation}) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // dispatch(allTheActions.activities.getActivities())
-    dispatch(allTheActions.activities.classicCall(10, 1))
+    dispatch(allTheActions.activities.getActivities(10))
     return () => {
       dispatch(allTheActions.activities.clearActivities())
     }
@@ -20,7 +20,7 @@ const Home = ({navigation}) => {
 
   return (
     <ContainerSafeArea>
-        <TitleListing>Notre Sélection</TitleListing>
+        <TitleListing>Activités sur Paris</TitleListing>
         <FlatList
           pagingEnabled={true}
           data={activities}
@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
           renderItem={({ item }) => (
             <Button item={item} navigation={navigation} />
           )}
-        />
+      />
     </ContainerSafeArea>
   )
 }
