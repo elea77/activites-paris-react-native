@@ -8,8 +8,14 @@ const ScrollView = styled.ScrollView`
     margin: 10px;
 `
 
-const ContainerSafeArea = styled.SafeAreaView`
-    marginBottom: 50px;
+const ContainerView = styled.View`
+    height: 100%;    
+    width: 100%;
 `
 
-export { ContainerSafeArea, Container, ScrollView }
+const ContainerSafeArea = styled.SafeAreaView`
+    marginBottom: 50px;
+    width: 100%;
+`
+
+export { ContainerSafeArea, Container, ScrollView, ContainerView }

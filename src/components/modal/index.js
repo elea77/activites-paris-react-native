@@ -1,27 +1,57 @@
 import React from 'react';
 import styled from 'styled-components'
-import MapModal from "react-native-modal";
 
-const Modal = ({item, navigation}) => {
+const Modal = ({ item, index, navigation }) => {
     return (
-        // <View>
-
-            <MapModal>
-                <Test>
-                    testeeeeeeeee
-                </Test>
-            </MapModal>
-        // </View>
+        <Card key={index}>
+            <Image
+                source={{
+                    uri: item.fields.cover_url
+                }}
+            />
+            <ContentText>
+                <Text>{item.fields.title}</Text>
+                <Button onPress={() => navigation.navigate('Details', { item: item })}>
+                    <TextButton>En savoir plus</TextButton>
+                </Button>
+            </ContentText>
+        </Card>
     )
 }
 
-const View = styled.View`
-flex: 1;
-justifyContent: center;
-alignItems: center;`
+const Button = styled.TouchableOpacity`
+    alignItems: center;
+    background: #2d8aa7;
+    width: 150px;
+    padding: 8px;
+    borderRadius: 20px;
+    marginTop: 10px;
+`
 
-const Test = styled.Text`
-color: black;`
+const Image = styled.Image`
+    width: 100%;
+    minHeight: 110px;
+    resizeMode: cover;
+    borderTopLeftRadius: 5px;
+    borderTopRightRadius: 5px;
+`
+
+const Card = styled.View`
+    backgroundColor: white;
+    margin: 10px;
+    borderRadius: 10px;
+`
+
+const ContentText = styled.View`
+    padding: 10px;
+`
+
+const Text = styled.Text``
+
+const TextButton = styled.Text`
+    color: white;
+    alignItems: center;
+`
 
 
 export default Modal
