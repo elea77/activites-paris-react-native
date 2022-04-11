@@ -28,21 +28,22 @@ const Details = ({ route }) => {
     <Container>
       <Image source={{ uri: item.fields.cover_url }} />
       <ContainerText>
-      <Title>{item.fields.title}</Title>
-      <Text> {item.fields.tags} </Text>
-      <Text> {item.fields.address_name} </Text>
-      <Text> {item.fields.address_street} </Text>
-      <Text> {item.fields.address_zipcode} </Text>
-      <City> {item.fields.address_city} </City>
-
-      <ReadMore numberOfLines={5} seeMoreText='Lire plus' seeLessText='Lire moins'>
-        <TextDescription> {item.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
-      </ReadMore>
-      <Button
-        onPress={() => addRemove()}
-      >
-        <TextButton>Ajouter aux favoris</TextButton>
-      </Button>
+        <Title>{item.fields.title}</Title>
+        <Text> {item.fields.tags} </Text>
+        <Adress>
+          <Text> {item.fields.address_name} </Text>
+          <Text> {item.fields.address_street} </Text>
+          <Text> {item.fields.address_zipcode} </Text>
+          <City> {item.fields.address_city} </City>
+        </Adress>
+        <ReadMore numberOfLines={5} seeMoreText='Lire plus' seeLessText='Lire moins'>
+          <TextDescription> {item.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
+        </ReadMore>
+        <Button
+          onPress={() => addRemove()}
+        >
+          <TextButton>Ajouter aux favoris</TextButton>
+        </Button>
       </ContainerText>
     </Container>
   )
@@ -50,13 +51,21 @@ const Details = ({ route }) => {
 
 Details.propTypes = {}
 
+const Adress = styled.View`
+  alignSelf: flex-end
+  marginTop: 10px
+  margin-bottom : 10px;
+`
+
+
 const Button = styled.TouchableOpacity`
-  marginTop: 20px
+  marginTop: 50px
   alignItems: center
   background: #2d8aa7,
   width: 150px;
   height: 40px;
   borderRadius: 20px
+
 `
 
 const TextButton = styled.Text`
@@ -75,9 +84,9 @@ const TextDescription = styled.Text`
 `
 
 const City = styled.Text`
-color: 'white',
-background: #2d8aa7,
-
+color: #ffffff
+textAlign: center
+background: #2d8aa7
 `
 
 const Image = styled.Image`
