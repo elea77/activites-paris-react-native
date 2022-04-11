@@ -6,6 +6,7 @@ import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FlatList } from 'react-native';
 import Button from '../components/button'
+import MapModal from '../components/modal';
 
 const Home = ({navigation}) => {
   const activities = useSelector(state => state.activities.activitiesList)

@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { Container } from '../components/layout'
-import { CommonText, Title } from '../components/text'
-import styled from 'styled-components'
-import SettingsLine from '../components/settingsLine'
+import React, { useState, useEffect } from 'react';
+import { ScrollView } from '../components/layout';
+import { CommonText, Title } from '../components/text';
+import SettingsLine from '../components/settingsLine';
 
-const Settings = ({navigation}) => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+const Settings = () => {
+
   return (
-    <Container>
-        <Title>Settings</Title>
-        <SettingsLine/>
-    </Container>
+    <ScrollView>
+      <Title>Settings</Title>
+      <SettingsLine title="Thème sombre" />
+      <SettingsLine title="Notifications push" />
+    </ScrollView>
   )
 }
 

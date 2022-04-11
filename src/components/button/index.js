@@ -8,8 +8,8 @@ const Button = ({item, navigation}) => {
           <View>
             <Cover urlImage={item.fields.cover_url} />
             <EventTitle ellipsizeMode='tail' numberOfLines={1}>{item.fields.title}</EventTitle>
-      </View>
-        </Btn>
+        </View>
+      </Btn>
     )
 }
 

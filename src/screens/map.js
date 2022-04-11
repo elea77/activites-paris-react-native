@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import MapView, { Marker, Overlay } from 'react-native-maps';
 import allTheActions from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components'
-
+import styled from 'styled-components';
+import { ContainerView } from '../components/layout';
+import Modal from '../components/modal';
 
 const Map = ({navigation}) => {
   const activities = useSelector(state => state.activities.activitiesList)
@@ -15,9 +16,13 @@ const Map = ({navigation}) => {
       dispatch(allTheActions.activities.clearActivities())
     }
   }, [dispatch])
+
+  const onMarkerPress = (e) => { 
+    e.preventDefault();
+  }
   
   return (
-    <View>
+    <ContainerView>
       <MapView
         style={{ width: "100%", height: "100%"}}
         initialRegion={{
@@ -31,15 +36,33 @@ const Map = ({navigation}) => {
               key={index}
               coordinate={{ latitude : item.fields.lat_lon?.[0] , longitude : item.fields.lat_lon?.[1] }}
               title={item.fields.title}
+              onPress={(e) => onMarkerPress(e)}
             />
           ))}
       </MapView>
-    </View>
+      <ScrollView
+        horizontal
+        pagingEnabled
+        scrollEventThrottle={1}    
+        showsHorizontalScrollIndicator={false}
+        snapToAlignment="center"
+        snapToInterval={300}
+        style={{ width: "100%" }}
+        >
+        {activities.map((item, index) => (
+            <Modal index={index} item={item} navigation={navigation} />
+          ))}
+      </ScrollView>
+    </ContainerView>
   )
 }
 
-const Text = styled.Text``
-const View = styled.View``
+
+const ScrollView = styled.ScrollView`
+  position: absolute;
+  bottom: 0;
+`
+
 
 Map.propTypes = {}
 

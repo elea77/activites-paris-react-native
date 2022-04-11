@@ -1,4 +1,4 @@
-export const DISPLAY_FAVORITES = 'DISPLAY_FAVORITES'
+export const CLEAR_FAVORITES = 'CLEAR_FAVORITES'
 export const CHECK_FAVORITE = 'CHECK_FAVORITE'
 
 export const checkFavorite = payload => ({
@@ -6,7 +6,6 @@ export const checkFavorite = payload => ({
     payload
 })
 
-export const displayFavorites = payload => ({
-  type: DISPLAY_FAVORITES,
-  payload
+export const clearFavorites = () => ({
+  type: CLEAR_FAVORITES
 })

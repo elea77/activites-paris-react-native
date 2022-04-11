@@ -27,3 +27,4 @@ export const getActivities = rows => dispatch => {
         console.log(err)
     })
 }
+
