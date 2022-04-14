@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const Modal = ({ item, index, navigation }) => {
+const Modal = ({ item, navigation }) => {
     return (
-        <Card key={index}>
+        <Card>
             <Image
                 source={{
                     uri: item.fields.cover_url
@@ -18,6 +18,13 @@ const Modal = ({ item, index, navigation }) => {
         </Card>
     )
 }
+
+
+const Card = styled.View`
+    backgroundColor: white;
+    margin: 10px;
+    borderRadius: 10px;
+`
 
 const Button = styled.TouchableOpacity`
     alignItems: center;
@@ -34,12 +41,6 @@ const Image = styled.Image`
     resizeMode: cover;
     borderTopLeftRadius: 5px;
     borderTopRightRadius: 5px;
-`
-
-const Card = styled.View`
-    backgroundColor: white;
-    margin: 10px;
-    borderRadius: 10px;
 `
 
 const ContentText = styled.View`
