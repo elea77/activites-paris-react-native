@@ -10,7 +10,10 @@ import ReadMore from '@fawazahmed/react-native-read-more';
 const Details = ({ route }) => {
 
   const favorites = useSelector(state => state.favorites.favoritesList)
+  const activity = useSelector(state => state.activities.activity)
   const dispatch = useDispatch()
+
+  const [thisActivity, setThisActivity] = useState({});
 
   const {
     params: { item }
@@ -21,9 +24,18 @@ const Details = ({ route }) => {
   }
 
   useEffect(() => {
-    console.log('mes favoris:', favorites);
-  }, [favorites])
-  console.log(item);
+    console.log('sheeeehdouqhduqd')
+    if(!item.fields.description){
+      dispatch(allTheActions.activities.getActivity(item.recordid))
+      setThisActivity(activity)
+      console.log(thisActivity)
+    }else{
+      setThisActivity(item)
+      console.log('test')
+      console.log(thisActivity)
+    }
+  }, [])
+
   return (
     <Container>
       <Image source={{ uri: item.fields.cover_url }} />
@@ -40,7 +52,7 @@ const Details = ({ route }) => {
           <TextDescription> {item.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
         </ReadMore>
         <Button
-          onPress={() => addRemove()}
+          onPress={() => checkFavorite()}
         >
           <TextButton>Ajouter aux favoris</TextButton>
         </Button>

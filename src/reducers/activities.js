@@ -1,7 +1,8 @@
-import { DISPLAY_ACTIVITIES, CLEAR_ACTIVITIES } from '../actions/activities'
+import { DISPLAY_ACTIVITIES, CLEAR_ACTIVITIES, DISPLAY_ACTIVITY } from '../actions/activities'
 
 const initialState = {
-    activitiesList: []
+    activitiesList: [],
+    activity: {}
 }
 
 export default (state = initialState, action) => {
@@ -15,6 +16,11 @@ export default (state = initialState, action) => {
         return {
             ...state,
             activitiesList: []
+        }
+        case DISPLAY_ACTIVITY:
+        return {
+            ...state,
+            activity: action.payload
         }
         default:
         return state
