@@ -35,7 +35,8 @@ const Map = ({navigation}) => {
           longitudeDelta: 0.0421,
         }}
         onMarkerSelect={() => setModal(true)} 
-        onMarkerDeselect={() => setModal(false)} >
+        onMarkerDeselect={() => setModal(false)}
+        moveOnMarkerPress={true} >
           {activities.map((item, index) => (
             <Marker
               key={index}

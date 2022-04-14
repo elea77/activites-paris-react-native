@@ -1,5 +1,9 @@
 import React from 'react';
+import NativeLinkingManager from 'react-native/Libraries/Linking/NativeLinkingManager';
 import styled from 'styled-components'
+import { Grid, Column } from '../layout';
+
+
 
 const Modal = ({ item, navigation }) => {
     return (
@@ -11,9 +15,18 @@ const Modal = ({ item, navigation }) => {
             />
             <ContentText>
                 <Text>{item.fields.title}</Text>
-                <Button onPress={() => navigation.navigate('Details', { item: item })}>
-                    <TextButton>En savoir plus</TextButton>
-                </Button>
+                <Grid>
+                    <Column>
+                        <Button onPress={() => navigation.navigate('Details', { item: item })}>
+                            <TextButton>En savoir plus</TextButton>
+                        </Button>
+                    </Column>
+                    <Column>
+                        <Button onPress={() => NativeLinkingManager.openURL(`https://www.google.com/maps/dir//${item.fields.address_street.replace(' ', '+')},+${item.fields.address_zipcode}+${item.fields.address_city.replace(' ', '+')}/@${item.fields.lat_lon?.[0]},${item.fields.lat_lon?.[1]}`)}>
+                            <TextButton>Itinéraire</TextButton>
+                        </Button>
+                    </Column>
+                </Grid>
             </ContentText>
         </Card>
     )
@@ -53,6 +66,7 @@ const TextButton = styled.Text`
     color: white;
     alignItems: center;
 `
+
 
 
 export default Modal
