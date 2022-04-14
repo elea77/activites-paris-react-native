@@ -68,5 +68,4 @@ const TextButton = styled.Text`
 `
 
 
-
 export default Modal

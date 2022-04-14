@@ -30,5 +30,4 @@ const Column = styled.View`
   width: 50%;
 `
 
-
 export { ContainerSafeArea, Container, ScrollView, ContainerView, Grid, Column }

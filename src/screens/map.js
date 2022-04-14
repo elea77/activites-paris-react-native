@@ -62,7 +62,6 @@ const View = styled.View`
   width: 100%;
 `
 
-
 Map.propTypes = {}
 
 export default Map
