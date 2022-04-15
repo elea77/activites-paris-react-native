@@ -2,11 +2,11 @@ import React from 'react'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Image } from "react-native";
+import { Image } from "react-native"
 import HomeStack from './homeStack'
 import WishlistStack from './wishlistStack'
 import MapStack from './mapStack'
-// import FlashMessage from 'react-native-flash-message'
+import FlashMessage from 'react-native-flash-message'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const BottomTab = createBottomTabNavigator()
@@ -41,7 +41,7 @@ const Routes = () => {
             )
           }} />
       </BottomTab.Navigator>
-      {/* <FlashMessage position='top' /> */}
+      <FlashMessage position='top' />
     </NavigationContainer>
   )
 }
