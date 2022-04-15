@@ -9,9 +9,9 @@ import Button from '../components/button'
 import { clearFavorites } from '../actions/favorites'
 
 const Wishlist = ({navigation}) => {
-
+  
   const favorites = useSelector(state => state.favorites.favoritesList)
-
+  console.log("favorites", favorites);
   return (
     <ContainerSafeArea>
         <Title>Wishlist</Title>

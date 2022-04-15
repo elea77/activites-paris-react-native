@@ -27,7 +27,6 @@ const Details = ({ route }) => {
   // }
 
   const setTheActivity = () => {
-    console.log("sheeeesh : " + isLoading)
     if(!item.fields.description){
       dispatch(allTheActions.activities.getActivity(item.recordid))
       setThisActivity(activity[0])
@@ -40,10 +39,6 @@ const Details = ({ route }) => {
   useEffect(() => {
     setTheActivity()
   }, [])
-
-  // useFocusEffect(() => {
-  //   setTheActivity()
-  // })
 
   if(isLoading){
     return (

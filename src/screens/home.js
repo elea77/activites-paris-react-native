@@ -11,29 +11,28 @@ import ImageHome from '../components/imageHome'
 
 const Home = ({navigation}) => {
   const activities = useSelector(state => state.activities.activitiesList)
-  const activity = useSelector(state => state.activities.activityList)
+  const oneActivity = useSelector(state => state.activities.oneActivity)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(allTheActions.activities.getActivities(12, 2))
+    dispatch(allTheActions.activities.getOneActivity(1))
+
     return () => {
       dispatch(allTheActions.activities.clearActivities())
+      dispatch(allTheActions.activities.clearOneActivity())
+
     }
   }, [dispatch])
 
-  useEffect(() => {
-    dispatch(allTheActions.activities.getOneActivity(1))
-    return () => {
-      dispatch(allTheActions.activities.clearActivity())
-    }
-  }, [dispatch])
+
 
   return (
     <ContainerSafeArea>
         <TitleListing>Activités sur Paris</TitleListing>
         <FlatList
-          data={activity}
+          data={oneActivity}
           keyExtractor={item => item.recordid}
           renderItem={({ item }) => (
             <ImageHome item={item} navigation={navigation} />
