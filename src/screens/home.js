@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { ContainerSafeArea } from '../components/layout'
+import { ContainerSafeArea, ScrollView } from '../components/layout'
 import styled from 'styled-components'
 import { TitleListing } from '../components/text'
 import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { FlatList } from 'react-native';
+import { FlatList, Image } from 'react-native';
 import Button from '../components/button'
 import MapModal from '../components/modal';
 import ImageHome from '../components/imageHome'
 
-const Home = ({navigation}) => {
+
+const Home = ({ navigation }) => {
   const activities = useSelector(state => state.activities.activitiesList)
   const oneActivity = useSelector(state => state.activities.oneActivity)
 
@@ -30,15 +31,16 @@ const Home = ({navigation}) => {
 
   return (
     <ContainerSafeArea>
-        <TitleListing>Activités sur Paris</TitleListing>
+      <ScrollView>
+        <TitleListing>Activités sur Paris</TitleListing>  
         <FlatList
           data={oneActivity}
           keyExtractor={item => item.recordid}
           renderItem={({ item }) => (
             <ImageHome item={item} navigation={navigation} />
           )}
-      />
-        <FlatListStyle
+        />
+        <FlatList
           pagingEnabled={true}
           data={activities}
           numColumns={2}
@@ -46,15 +48,14 @@ const Home = ({navigation}) => {
           renderItem={({ item }) => (
             <Button item={item} navigation={navigation} />
           )}
-      />
+        />
+      </ScrollView>
     </ContainerSafeArea>
   )
 }
 
 Home.propTypes = {}
 
-const FlatListStyle = styled.FlatList`
-  marginBottom: 180px;
-`
+
 
 export default Home

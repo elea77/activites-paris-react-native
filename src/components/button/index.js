@@ -1,25 +1,43 @@
 import React from 'react';
 import styled from 'styled-components'
 import Cover from '../cover'
+import { Image } from 'react-native';
 
-const Button = ({item, navigation}) => {
-    return (
-      <Btn onPress={() => navigation.navigate('Details', { item: item })}>
-          <View>
-            <Cover urlImage={item.fields.cover_url} />
-            <EventTitle ellipsizeMode='tail' numberOfLines={1}>{item.fields.title}</EventTitle>
-        </View>
-      </Btn>
-    )
+
+const Button = ({ item, navigation }) => {
+
+  var afficheImage ; 
+
+  if ( item.fields.cover_url ) {
+    afficheImage = <Cover urlImage={item.fields.cover_url} />
+
+  } else {
+    afficheImage = <ImageStyled
+    source={require('../../assets/unknown.png')}
+  />
+
+  }
+  return (
+    <Btn onPress={() => navigation.navigate('Details', { item: item })}>
+      <View>
+        { afficheImage }
+        <EventTitle ellipsizeMode='tail' numberOfLines={1}>{item.fields.title}</EventTitle>
+      </View>
+    </Btn>
+  )
 }
 
 const View = styled.View`
   margin: 5px;
 `
-
 const Btn = styled.TouchableOpacity`
   width: 50%;
 `
+const ImageStyled = styled.Image`
+width: 100%;
+height: 120px;
+borderRadius: 5px;
+resizeMode: cover;`
 
 const EventTitle = styled.Text`
   textAlign: center;

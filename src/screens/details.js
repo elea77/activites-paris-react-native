@@ -11,7 +11,6 @@ import ButtonFavorite from '../components/buttonFavorite'
 
 const Details = ({ route }) => {
 
-  // const favorites = useSelector(state => state.favorites.favoritesList)
   const activity = useSelector(state => state.activities.activity)
   const dispatch = useDispatch()
 
@@ -22,9 +21,6 @@ const Details = ({ route }) => {
     params: { item }
   } = route
 
-  // const checkFavorite = () => {
-  //   dispatch(allTheActions.favorites.checkFavorite({recordid: item.recordid, title: item.fields.title, img: item.fields.cover_url}))
-  // }
 
   const setTheActivity = () => {
     if(!item.fields.description){
@@ -43,7 +39,7 @@ const Details = ({ route }) => {
   if(isLoading){
     return (
       <Container>
-        <Text>Ca charge trou du cul</Text>
+        <Text>Ca charge </Text>
       </Container>
     )
   }

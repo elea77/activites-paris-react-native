@@ -16,7 +16,6 @@ const ImageHome = ({ item, navigation }) => {
 
 const View = styled.View`
   margin: 5px;
-  marginBottom: 130px;
 `
 
 const Btn = styled.TouchableOpacity`
