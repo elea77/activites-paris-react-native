@@ -18,4 +18,16 @@ const ContainerSafeArea = styled.SafeAreaView`
     width: 100%;
 `
 
-export { ContainerSafeArea, Container, ScrollView, ContainerView }
+const Grid = styled.View`
+  flex: 1
+  flexDirection: row
+  flexWrap: wrap
+  alignItems: flex-start
+  margin: 10px
+`
+
+const Column = styled.View`
+  width: 50%;
+`
+
+export { ContainerSafeArea, Container, ScrollView, ContainerView, Grid, Column }

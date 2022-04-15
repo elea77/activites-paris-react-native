@@ -6,44 +6,74 @@ import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { image, View, Text, TouchableOpacity } from 'react-native';
 import ReadMore from '@fawazahmed/react-native-read-more';
+import { useFocusEffect } from '@react-navigation/native'
+import ButtonFavorite from '../components/buttonFavorite'
 
 const Details = ({ route }) => {
 
-  const favorites = useSelector(state => state.favorites.favoritesList)
+  // const favorites = useSelector(state => state.favorites.favoritesList)
+  const activity = useSelector(state => state.activities.activity)
   const dispatch = useDispatch()
+
+  const [thisActivity, setThisActivity] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
     params: { item }
   } = route
 
-  const checkFavorite = () => {
-    dispatch(allTheActions.favorites.checkFavorite({recordid: item.recordid, title: item.fields.title, img: item.fields.cover_url}))
+  // const checkFavorite = () => {
+  //   dispatch(allTheActions.favorites.checkFavorite({recordid: item.recordid, title: item.fields.title, img: item.fields.cover_url}))
+  // }
+
+  const setTheActivity = () => {
+    console.log("sheeeesh : " + isLoading)
+    if(!item.fields.description){
+      dispatch(allTheActions.activities.getActivity(item.recordid))
+      setThisActivity(activity[0])
+    }else{
+      setThisActivity(item)
+    }
+    setIsLoading(false)
   }
 
   useEffect(() => {
-    console.log('mes favoris:', favorites);
-  }, [favorites])
-  console.log(item);
+    setTheActivity()
+  }, [])
+
+  // useFocusEffect(() => {
+  //   setTheActivity()
+  // })
+
+  if(isLoading){
+    return (
+      <Container>
+        <Text>Ca charge trou du cul</Text>
+      </Container>
+    )
+  }
+
   return (
     <Container>
-      <Image source={{ uri: item.fields.cover_url }} />
+      <Image source={{ uri: thisActivity.fields.cover_url }} />
       <ContainerText>
-        <Title>{item.fields.title}</Title>
-        <Text> {item.fields.tags} </Text>
+        <Title>{thisActivity.fields.title}</Title>
+        <Text> {thisActivity.fields.tags} </Text>
         <Adress>
-          <Text> {item.fields.address_name} </Text>
-          <Text> {item.fields.address_street} </Text>
-          <Text> {item.fields.address_zipcode} </Text>
-          <City> {item.fields.address_city} </City>
+          <Text> {thisActivity.fields.address_name} </Text>
+          <Text> {thisActivity.fields.address_street} </Text>
+          <Text> {thisActivity.fields.address_zipcode} </Text>
+          <City> {thisActivity.fields.address_city} </City>
         </Adress>
         <ReadMore numberOfLines={5} seeMoreText='Lire plus' seeLessText='Lire moins'>
-          <TextDescription> {item.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
+          <TextDescription> {thisActivity.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
         </ReadMore>
-        <Button
-          onPress={() => addRemove()}
+        <ButtonFavorite activity={thisActivity}/>
+        {/* <Button
+          onPress={() => checkFavorite()}
         >
           <TextButton>Ajouter aux favoris</TextButton>
-        </Button>
+        </Button> */}
       </ContainerText>
     </Container>
   )

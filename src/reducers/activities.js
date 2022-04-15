@@ -1,7 +1,8 @@
 import { DISPLAY_ACTIVITIES, DISPLAY_ACTIVITY, CLEAR_ACTIVITIES, CLEAR_ACTIVITY } from '../actions/activities'
 
 const initialState = {
-    activitiesList: []
+    activitiesList: [],
+    activity: {}
 }
 
 export default (state = initialState, action) => {

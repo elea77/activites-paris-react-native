@@ -9,6 +9,9 @@ import Modal from '../components/modal';
 const Map = ({navigation}) => {
   const activities = useSelector(state => state.activities.activitiesList)
   const dispatch = useDispatch()
+
+  const [modal, setModal] = useState(false);
+  const [item, setItem] = useState({});
   
   useEffect(() => {
     dispatch(allTheActions.activities.getActivities(50))
@@ -17,8 +20,8 @@ const Map = ({navigation}) => {
     }
   }, [dispatch])
 
-  const onMarkerPress = (e) => { 
-    e.preventDefault();
+  const onMarkerPress = (item) => { 
+    setItem(item);
   }
   
   return (
@@ -30,39 +33,34 @@ const Map = ({navigation}) => {
           longitude: 2.3488,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
-        }} >
+        }}
+        onMarkerSelect={() => setModal(true)} 
+        onMarkerDeselect={() => setModal(false)}
+        moveOnMarkerPress={true} >
           {activities.map((item, index) => (
             <Marker
               key={index}
               coordinate={{ latitude : item.fields.lat_lon?.[0] , longitude : item.fields.lat_lon?.[1] }}
               title={item.fields.title}
-              onPress={(e) => onMarkerPress(e)}
+              onPress={() => onMarkerPress(item)}
             />
           ))}
       </MapView>
-      <ScrollView
-        horizontal
-        pagingEnabled
-        scrollEventThrottle={1}    
-        showsHorizontalScrollIndicator={false}
-        snapToAlignment="center"
-        snapToInterval={300}
-        style={{ width: "100%" }}
-        >
-        {activities.map((item, index) => (
-            <Modal index={index} item={item} navigation={navigation} />
-          ))}
-      </ScrollView>
+      { modal ? 
+        <View>
+          <Modal item={item} navigation={navigation} />
+        </View>
+      : null }
     </ContainerView>
   )
 }
 
 
-const ScrollView = styled.ScrollView`
+const View = styled.View`
   position: absolute;
   bottom: 0;
+  width: 100%;
 `
-
 
 Map.propTypes = {}
 
