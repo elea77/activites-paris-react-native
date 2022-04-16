@@ -36,7 +36,7 @@ const Details = ({ route }) => {
   useEffect(() => {
     setTheActivity()
   }, [])
-
+  
   if(isLoading){
     return (
       <Container>

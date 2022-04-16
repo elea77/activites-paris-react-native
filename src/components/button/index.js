@@ -11,9 +11,7 @@ const Button = ({ item, navigation }) => {
     afficheImage = <Cover urlImage={item.fields.cover_url} />
 
   } else {
-    afficheImage = <ImageStyled
-    source={require('../../assets/unknown.png')}
-  />
+    afficheImage = <ImageStyled source={require('../../assets/unknown.png')}/>
 
   }
   return (

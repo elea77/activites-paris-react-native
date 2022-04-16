@@ -5,7 +5,9 @@ const Container = styled.ScrollView`
 `
 
 const ScrollView = styled.ScrollView`
-    margin: 10px;
+    marginLeft: 10px;
+    marginRight: 10px;
+
 `
 
 const ContainerView = styled.View`
@@ -14,7 +16,7 @@ const ContainerView = styled.View`
 `
 
 const ContainerSafeArea = styled.SafeAreaView`
-    marginBottom: 50px;
+    //marginBottom: 50px;
     width: 100%;
 `
 
