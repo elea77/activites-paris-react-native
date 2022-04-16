@@ -3,7 +3,7 @@ import MapView, { Marker, Overlay } from 'react-native-maps';
 import allTheActions from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { ContainerView } from '../components/layout';
+import { AbsoluteView, ContainerView } from '../components/layout';
 import Modal from '../components/modal';
 
 const Map = ({navigation}) => {
@@ -47,20 +47,14 @@ const Map = ({navigation}) => {
           ))}
       </MapView>
       { modal ? 
-        <View>
+        <AbsoluteView>
           <Modal item={item} navigation={navigation} />
-        </View>
+        </AbsoluteView>
       : null }
     </ContainerView>
   )
 }
 
-
-const View = styled.View`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-`
 
 Map.propTypes = {}
 

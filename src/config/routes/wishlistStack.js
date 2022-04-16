@@ -9,7 +9,10 @@ const WishlistStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Mes favoris' component={Wishlist} />
-      <Stack.Screen name='Details' component={Details} />
+      <Stack.Screen name='Details' component={Details}
+        options={{
+          title: 'Détails'
+        }} />
     </Stack.Navigator>
   )
 }

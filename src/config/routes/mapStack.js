@@ -11,7 +11,10 @@ const MapStack = () => {
       <Stack.Screen name='Map' component={Map} options={{
         title: 'Carte'
       }} />
-      <Stack.Screen name='Details' component={Details} />
+      <Stack.Screen name='Details' component={Details}
+        options={{
+          title: 'Détails'
+        }} />
     </Stack.Navigator>
   )
 }

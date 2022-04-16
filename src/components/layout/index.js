@@ -19,15 +19,36 @@ const ContainerSafeArea = styled.SafeAreaView`
 `
 
 const Grid = styled.View`
-  flex: 1
-  flexDirection: row
-  flexWrap: wrap
-  alignItems: flex-start
-  margin: 10px
+  flex: 1;
+  flexDirection: row;
+  flexWrap: wrap;
+  alignItems: flex-start;
+  margin: 10px;
 `
 
 const Column = styled.View`
   width: 50%;
 `
 
-export { ContainerSafeArea, Container, ScrollView, ContainerView, Grid, Column }
+const ContainerText = styled.View`
+  margin: 10px;
+  alignItems: center;
+`
+
+const AbsoluteView = styled.View`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+`
+
+
+const TopAbsoluteView = styled.View`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  flex: 1;
+  flexDirection: row;
+`
+
+export { ContainerSafeArea, Container, ScrollView, ContainerView, Grid, Column, ContainerText, AbsoluteView, TopAbsoluteView }

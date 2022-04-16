@@ -21,7 +21,10 @@ const HomeStack = ({navigation}) => {
             </Button>
           ),
       }} />
-      <Stack.Screen name='Details' component={Details} />
+      <Stack.Screen name='Details' component={Details}
+        options={{
+          title: 'Détails'
+        }} />
       <Stack.Screen name='Settings' component={Settings} />
     </Stack.Navigator>
   )

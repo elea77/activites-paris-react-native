@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Container } from '../components/layout'
+import { Container, ContainerText } from '../components/layout'
 import styled from 'styled-components'
-import { Title } from '../components/text'
+import { CommonText, Title, Adress, City, SubTitle } from '../components/text'
 import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { image, View, Text, TouchableOpacity } from 'react-native';
 import ReadMore from '@fawazahmed/react-native-read-more';
-import { useFocusEffect } from '@react-navigation/native'
-import ButtonFavorite from '../components/buttonFavorite'
+import MapView, { Marker } from 'react-native-maps';
+import NativeLinkingManager from 'react-native/Libraries/Linking/NativeLinkingManager';
+import ImageDetails from '../components/imageDetails'
+
 
 const Details = ({ route }) => {
 
@@ -39,76 +40,50 @@ const Details = ({ route }) => {
   if(isLoading){
     return (
       <Container>
-        <Text>Ca charge </Text>
+        <CommonText>Chargement en cours...</CommonText>
       </Container>
     )
   }
 
+
   return (
     <Container>
-      <Image source={{ uri: thisActivity.fields.cover_url }} />
+      <ImageDetails item={thisActivity} />
       <ContainerText>
         <Title>{thisActivity.fields.title}</Title>
-        <Text> {thisActivity.fields.tags} </Text>
+        <CommonText> {thisActivity.fields.tags} </CommonText>
         <Adress>
-          <Text> {thisActivity.fields.address_name} </Text>
-          <Text> {thisActivity.fields.address_street} </Text>
-          <Text> {thisActivity.fields.address_zipcode} </Text>
+          <CommonText> {thisActivity.fields.address_name} </CommonText>
+          <CommonText> {thisActivity.fields.address_street} </CommonText>
+          <CommonText> {thisActivity.fields.address_zipcode} </CommonText>
           <City> {thisActivity.fields.address_city} </City>
         </Adress>
         <ReadMore numberOfLines={5} seeMoreText='Lire plus' seeLessText='Lire moins'>
-          <TextDescription> {thisActivity.fields.description.replace(/<[^>]*>?/gm, '')} </TextDescription>
+          <CommonText>{thisActivity.fields.description.replace(/<[^>]*>?/gm, '')} </CommonText>
         </ReadMore>
-        <ButtonFavorite activity={thisActivity}/>
-        {/* <Button
-          onPress={() => checkFavorite()}
-        >
-          <TextButton>Ajouter aux favoris</TextButton>
-        </Button> */}
+      </ContainerText>
+      <ContainerText>
+        <SubTitle>Comment m'y rendre ?</SubTitle>
+        <MapView
+          style={{ width: "100%", height: 200}}
+          initialRegion={{
+            latitude: 48.8534,
+            longitude: 2.3488,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          moveOnMarkerPress={true}
+          onMarkerSelect={() => NativeLinkingManager.openURL(`https://www.google.com/maps/dir//${item.fields.address_street.replace(' ', '+')},+${item.fields.address_zipcode}+${item.fields.address_city.replace(' ', '+')}/@${item.fields.lat_lon?.[0]},${item.fields.lat_lon?.[1]}`)} >
+            <Marker
+              coordinate={{ latitude : thisActivity.fields.lat_lon?.[0] , longitude : thisActivity.fields.lat_lon?.[1] }}
+            />
+        </MapView>
       </ContainerText>
     </Container>
   )
 }
 
 Details.propTypes = {}
-
-const Adress = styled.View`
-  alignSelf: flex-end
-  marginTop: 10px
-  margin-bottom : 10px;
-`
-
-
-const Button = styled.TouchableOpacity`
-  marginTop: 50px
-  alignItems: center
-  background: #2d8aa7,
-  width: 150px;
-  height: 40px;
-  borderRadius: 20px
-
-`
-
-const TextButton = styled.Text`
-  paddingTop: 10px
-  alignItems: center;
-  color: #ffffff
-
-`
-const ContainerText = styled.View`
-  margin: 10px;
-  alignItems: center
-
-
-`
-const TextDescription = styled.Text`
-`
-
-const City = styled.Text`
-color: #ffffff
-textAlign: center
-background: #2d8aa7
-`
 
 const Image = styled.Image`
   width: 400px;

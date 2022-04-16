@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 import Cover from '../cover'
-import { Image } from 'react-native';
 
 
 const Button = ({ item, navigation }) => {
