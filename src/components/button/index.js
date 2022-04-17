@@ -43,6 +43,7 @@ const EventTitle = styled.Text`
   fontWeight: bold;
   fontSize: 14px;
   width: 100%;
+  color: ${props => props.theme.TEXT_COLOR};
 `
 
 export default Button

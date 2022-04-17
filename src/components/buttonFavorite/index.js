@@ -39,7 +39,7 @@ const ButtonFavorite = (props) => {
 
     return (
         <View>
-            <Icon onPress={() => checkFavorite()} name={isFavorite ? 'heart' : 'heart-outline'} size={28}/>
+            <Icon onPress={() => checkFavorite()} name={isFavorite ? 'heart' : 'heart-outline'} color={'red'} size={28}/>
         </View>
     )
 }

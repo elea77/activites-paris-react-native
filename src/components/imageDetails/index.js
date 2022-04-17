@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ButtonFavorite from '../buttonFavorite'
 import { TopAbsoluteView } from '../layout';
 import Icon from 'react-native-vector-icons/Ionicons'
-import notifee from '@notifee/react-native';
+// import notifee from '@notifee/react-native';
 
 
 const ImageDetails = ({ item }) => {
@@ -43,7 +43,7 @@ const ImageDetails = ({ item }) => {
       <View>
           { afficheImage }
           <TopAbsoluteView>
-              <Icon onPress={() => onDisplayNotification()} name="notifications-outline" size={28}/>
+              <Icon onPress={() => onDisplayNotification()} name="notifications-outline" color={'red'} size={28}/>
               <ButtonFavorite activity={item} />
           </TopAbsoluteView>
 
