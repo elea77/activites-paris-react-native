@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MapView, { Marker, Overlay } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import allTheActions from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
 import { AbsoluteView, ContainerView } from '../components/layout';
 import Modal from '../components/modal';
 

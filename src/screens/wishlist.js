@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { ContainerSafeArea } from '../components/layout'
-import { Title } from '../components/text'
-import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
-import allTheActions from '../actions'
+import { CommonText } from '../components/text'
+import { useSelector } from 'react-redux'
 import { FlatList } from 'react-native'
 import Button from '../components/button'
-import { clearFavorites } from '../actions/favorites'
+import { useTranslation } from 'react-i18next'
 
 const Wishlist = ({navigation}) => {
   
   const favorites = useSelector(state => state.favorites.favoritesList)
-
+  const { t } = useTranslation()
   return (
     <ContainerSafeArea>
-        <Title>Wishlist</Title>
 
         {
           favorites.length == 0 
           ?
-          <Text>
-            Vous n'avez pas de favoris
-          </Text>
+          <CommonText>
+            { t('page.favList') }
+          </CommonText>
           :
           <FlatList
             pagingEnabled={true}
@@ -36,8 +33,6 @@ const Wishlist = ({navigation}) => {
     </ContainerSafeArea>
   )
 }
-
-const Text = styled.Text``
 
 Wishlist.propTypes = {}
 

@@ -6,8 +6,8 @@ const Container = styled.ScrollView`
 `
 
 const ScrollView = styled.ScrollView`
-    marginLeft: 10px;
-    marginRight: 10px;
+    paddingLeft: 10px;
+    paddingRight: 10px;
     backgroundColor: ${props => props.theme.BACKGROUND_COLOR};
 
 `
@@ -19,8 +19,8 @@ const ContainerView = styled.View`
 `
 
 const ContainerSafeArea = styled.SafeAreaView`
-    //marginBottom: 50px;
     width: 100%;
+    height: 100%;   
     backgroundColor: ${props => props.theme.BACKGROUND_COLOR};
 `
 

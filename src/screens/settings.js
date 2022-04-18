@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ScrollView } from '../components/layout'
-import { CommonText, Title } from '../components/text'
+import { Title } from '../components/text'
 import SettingsLine from '../components/settingsLine'
+import { useTranslation } from 'react-i18next'
 
 const Settings = () => {
+  const { t } = useTranslation()
 
   return (
     <ScrollView>
-      <Title>Settings</Title>
-      <SettingsLine title="Langue (Fr / En)" settingType="language"/>
-      <SettingsLine title="Thème sombre" settingType="theme"/>
+      <Title>{ t('page.settings') }</Title>
+      <SettingsLine title={`${t('settings.language')} (En / Fr)`} settingType="language"/>
+      <SettingsLine title={ t('settings.theme') } settingType="theme"/>
     </ScrollView>
   )
 }

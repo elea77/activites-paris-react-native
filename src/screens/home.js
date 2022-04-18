@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { ContainerSafeArea, ScrollView } from '../components/layout'
-import styled from 'styled-components'
 import { TitleListing } from '../components/text'
 import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { FlatList, Image } from 'react-native';
+import { FlatList } from 'react-native';
 import Button from '../components/button'
-import MapModal from '../components/modal';
 import ImageHome from '../components/imageHome'
-
+import { useTranslation } from 'react-i18next'
 
 const Home = ({ navigation }) => {
   const activities = useSelector(state => state.activities.activitiesList)
@@ -27,12 +25,12 @@ const Home = ({ navigation }) => {
     }
   }, [dispatch])
 
-
+  const { t } = useTranslation()
 
   return (
     <ContainerSafeArea>
       <ScrollView>
-        <TitleListing>Activités sur Paris</TitleListing>  
+        <TitleListing>{ t('page.homeTitle') }</TitleListing>  
         <FlatList
           data={oneActivity}
           keyExtractor={item => item.recordid}

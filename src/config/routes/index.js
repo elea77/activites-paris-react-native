@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
-
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Image } from "react-native"
 import HomeStack from './homeStack'
 import WishlistStack from './wishlistStack'
 import MapStack from './mapStack'
 import FlashMessage from 'react-native-flash-message'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../theme'
 
