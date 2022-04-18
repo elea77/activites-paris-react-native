@@ -14,6 +14,10 @@ export default {
         settings: {
             language: 'Langue',
             theme: 'Thème clair'
+        },
+        notif: {
+            title: 'Hé ho toi !',
+            description: 'On arrête LOL et on va sur Paris !'
         }
     }
 }

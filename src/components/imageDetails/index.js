@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import ButtonFavorite from '../buttonFavorite'
 import { TopAbsoluteView } from '../layout';
 import Icon from 'react-native-vector-icons/Ionicons'
-// import notifee from '@notifee/react-native';
-
+import notifee from '@notifee/react-native';
+import { useTranslation } from 'react-i18next'  
 
 const ImageDetails = ({ item }) => {
-
+    const { t } = useTranslation()  
     var afficheImage ; 
 
     if ( item.fields.cover_url ) {
@@ -31,8 +31,8 @@ const ImageDetails = ({ item }) => {
   
       // Display a notification
       await notifee.displayNotification({
-        title: 'Hé ho toi !',
-        body: 'On arrête LOL et on va sur Paris !',
+        title: t('notif.title'),
+        body: t('notif.description'),
         android: {
           channelId
         },

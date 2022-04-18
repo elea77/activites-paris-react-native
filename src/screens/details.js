@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Container, ContainerText } from '../components/layout'
-import styled from 'styled-components'
 import { CommonText, Title, Adress, City, SubTitle } from '../components/text'
 import allTheActions from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -84,12 +83,6 @@ const Details = ({ route }) => {
 }
 
 Details.propTypes = {}
-
-const Image = styled.Image`
-  width: 400px;
-  height: 300px;
-  margin-bottom : 5px;
-`
 
 
 

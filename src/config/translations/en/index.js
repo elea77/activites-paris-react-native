@@ -14,6 +14,10 @@ export default {
         settings: {
             language: 'Language',
             theme: 'Light theme'
+        },
+        notif: {
+            title: 'Hey you !',
+            description: 'We stop LOL and go to Paris !'
         }
     }
 }
